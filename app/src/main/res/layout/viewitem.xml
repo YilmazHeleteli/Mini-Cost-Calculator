@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorBack"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="165dp"
+        android:layout_height="163dp"
+        app:srcCompat="@drawable/homepig" />
+
+    <TextView
+        android:id="@+id/itemViewName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:editable="true"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemViewFreq"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/itemViewDay"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/itemViewWeek"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/itemViewMonth"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/itemViewYear"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:text="This item has been added to your expenses. To view your expenses, tap 'Back Home' and then 'View Expenses'."
+        android:textColor="#140505"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/backHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f50057"
+        android:onClick="backHome"
+        android:text="Back Home"
+        android:textColor="#FFFFFF" />
+</LinearLayout>
