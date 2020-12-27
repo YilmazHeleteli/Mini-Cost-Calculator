@@ -7,109 +7,19 @@
     android:background="@color/colorBack"
     tools:context=".NewItem">
 
-    <TextView
-        android:id="@+id/editText"
-        android:layout_width="213dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter the Details"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/NewItemName"
-        android:layout_width="206dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginRight="189dp"
-        android:ems="10"
-        android:hint="What did you spend money on?"
-        android:inputType="textPersonName"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <RadioGroup
-        android:id="@+id/radioNec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="11dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4">
-
-        <RadioButton
-            android:id="@+id/radioYes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Yes" />
-
-
-        <RadioButton
-            android:id="@+id/radioNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Not Really..." />
-
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Was it really necessary?"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price" />
-
     <Button
         android:id="@+id/AddItem"
         android:layout_width="153dp"
         android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginBottom="36dp"
         android:background="#f50057"
         android:onClick="btnAdd"
-        android:text="Add"
+        android:text="Next"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/editText3"
-        android:layout_width="363dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Which Category does it fall under?"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/radioCat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioNec" />
 
     <RadioGroup
         android:id="@+id/radioCat"
@@ -118,86 +28,23 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="160dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCanc"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/newBack"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <RadioButton
-            android:id="@+id/radioFD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Food/Drink" />
-
-
-        <RadioButton
-            android:id="@+id/radioBill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bills" />
-
-        <RadioButton
-            android:id="@+id/radioTrans"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Transport" />
-
-        <RadioButton
-            android:id="@+id/radioCloth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clothing" />
-
-        <RadioButton
-            android:id="@+id/radioRec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recreational" />
-
-
-    </RadioGroup>
 
     <Button
-        android:id="@+id/buttonCanc"
+        android:id="@+id/newBack"
         android:layout_width="153dp"
         android:layout_height="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="147dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="36dp"
         android:background="#1a237e"
-        android:onClick="backHome"
         android:text="Back"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/itemFreq"
-        android:layout_width="98dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="10dp"
-        android:editable="true"
-        android:ems="10"
-        android:hint="Enter here"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/AddItem"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/Price"
-        android:layout_width="324dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="2dp"
-        android:ems="10"
-        android:hint="Enter price in pounds, e.g 0.8 for 80pence"
-        android:inputType="textPersonName"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewItemName" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
     <RadioGroup
         android:id="@+id/radioFrequency"
@@ -206,68 +53,88 @@
         android:layout_marginEnd="81dp"
         android:layout_marginRight="81dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCanc"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/newBack"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <RadioButton
-            android:id="@+id/radioDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:checked="true"
-            android:text="Day" />
-
-
-        <RadioButton
-            android:id="@+id/radioWeek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Week" />
-
-        <RadioButton
-            android:id="@+id/radioMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Month" />
-
-        <RadioButton
-            android:id="@+id/radioYear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Year"/>
-
-
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="times a:"
-        app:layout_constraintBottom_toTopOf="@+id/AddItem"
-        app:layout_constraintStart_toEndOf="@+id/itemFreq" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="238dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="How often do you purchase this?"
-        android:textSize="14sp"
+    <Button
+        android:id="@+id/btnCanc"
+        android:layout_width="114dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginRight="139dp"
+        android:background="#9C9797"
+        android:text="Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioCat" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="96dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:text="New Item"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCanc"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="329dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Enter Item Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCanc" />
+
+    <EditText
+        android:id="@+id/txtPrice"
+        android:layout_width="262dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="73dp"
+        android:ems="10"
+        android:hint="Enter price, e.g 0.8 for 80pence"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="156dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="109dp"
+        android:text="Non-Essential"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+
+    <RadioButton
+        android:id="@+id/essentialTrue"
+        android:layout_width="163dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginRight="81dp"
+        android:text="Essential"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/radioButton"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

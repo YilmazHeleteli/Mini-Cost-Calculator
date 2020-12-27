@@ -15,17 +15,14 @@ import android.widget.Toast;
 
 public class NewItem extends AppCompatActivity {
 
+    //layout
+
     EditText itemName;
     EditText itemPrice;
     Button btnAdd;
     EditText itemFreq;
 
     double price;
-    String category;
-    String necessary;
-    double perWeek;
-    double costPerDay, costPerWeek, costPerMonth, costPerYear;
-
 
     RadioGroup radioGroupFreq;
     RadioButton radioButtonFreq;
@@ -49,19 +46,21 @@ public class NewItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
-        itemName = findViewById(R.id.NewItemName);
+        itemName = findViewById(R.id.txtName);
         btnAdd = findViewById(R.id.AddItem);
-        itemPrice   = findViewById(R.id.Price);
+        itemPrice   = findViewById(R.id.txtPrice);
 
         //initialise radio group button values
-        itemFreq = findViewById(R.id.itemFreq);
+        itemFreq = findViewById(R.id.txtFreq);
         radioGroupFreq = findViewById(R.id.radioFrequency);
         radioGroupCat = findViewById(R.id.radioCat);
         radioGroupNecessary = findViewById(R.id.radioNec);
 
     }
 
-//capture data from fiels when Add Item is tapped
+//capture data from fields when Add Item is tapped
+
+Item item = new Item();
 
 public void btnAdd(View v) {
 
@@ -101,82 +100,20 @@ else{
         switch (radioButtonNecessary.getText().toString())
         {
             case "Yes":
-                necessary = "Necessary";
+                item.essential = true;
                 break;
             case "Not Really...":
-                necessary = "Unnecessary";
+                item.essential = false;
                 break;
-
-        }
-
-        //calculates the weekly frequency of purchases based on whether the purchase is daily, monthly, weekly or annually
-
-            double weekYear = 52.1429;
-            switch(radioButtonFreq.getText().toString())
-        {
-            case "Day":
-                perWeek = getFreq * 7;
-                break;
-            case "Week":
-                perWeek = getFreq;
-                break;
-            case "Month":
-                perWeek = (getFreq * 12) / weekYear;
-                break;
-            case "Year":
-                perWeek = getFreq/ weekYear;
-                break;
-        }
 
         //assigns a category to the item based on what the user has selected
 
-        switch(radioButtonCat.getText().toString())
-        {
-            case "Food/Drink":
-                category = "Food/Drink";
-                break;
-            case "Bills":
-                category = "Bills";
-                break;
-            case "Transport":
-                category = "Transport";
-                break;
-            case "Clothing":
-                category = "Clothing";
-                break;
-            case "Recreational":
-                category =  "Recreational";
-                break;
-        }
-
 
         //calculate costs per day, week, month and year
-        costPerWeek = price * perWeek;
-        costPerDay = costPerWeek / 7;
-        costPerMonth = (costPerWeek * weekYear) / 12;
-        costPerYear = costPerWeek * weekYear;
 
         //initialise object values
-        Item item = new Item();
+
         item.Name = itemName.getText().toString();
-        item.price = price;
-        item.category = category;
-
-        item.costPerWeek = costPerWeek;
-        item.costPerDay = costPerDay;
-        item.costPerMonth = costPerMonth;
-        item.costPerYear = costPerYear;
-
-        String perX;
-
-        if(getFreq == 1)
-        {
-            perX = "once a ";
-        }
-        else
-        {
-            perX = itemFreq.getText().toString()+" times a ";
-        }
 
 
         Toast.makeText(NewItem.this, "Item Added!" , Toast.LENGTH_SHORT).show();
@@ -226,10 +163,10 @@ else{
 
         itemViewName.setText(item.Name+" - £"+String.format("%.2f", item.price)+"("+item.category+").");
         itemViewFreq.setText("You buy this "+perX+radioButtonFreq.getText().toString()+". This is costing you:");
-        itemViewDay.setText("£"+String.format("%.2f", costPerDay)+" a day");
-        itemViewWeek.setText("£"+String.format("%.2f", costPerWeek)+" a week");
-        itemViewMonth.setText("£"+String.format("%.2f", costPerMonth)+" a month");
-        itemViewYear.setText("£"+String.format("%.2f", costPerYear)+" a year");
+        itemViewDay.setText("£"+String.format("%.2f", item.costPerDay)+" a day");
+        itemViewWeek.setText("£"+String.format("%.2f", item.costPerWeek)+" a week");
+        itemViewMonth.setText("£"+String.format("%.2f", item.costPerMonth)+" a month");
+        itemViewYear.setText("£"+String.format("%.2f", item.costPerYear)+" a year");
 
     }
         catch (NumberFormatException i){
