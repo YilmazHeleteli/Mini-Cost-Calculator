@@ -15,7 +15,7 @@
         android:layout_marginLeft="240dp"
         android:layout_marginBottom="36dp"
         android:background="#f50057"
-        android:onClick="btnAdd"
+        android:onClick="next"
         android:text="Next"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,15 +36,14 @@
         android:id="@+id/newBack"
         android:layout_width="153dp"
         android:layout_height="64dp"
-        android:layout_marginTop="147dp"
         android:layout_marginEnd="240dp"
         android:layout_marginBottom="36dp"
         android:background="#1a237e"
+        android:onClick="backHome"
         android:text="Back"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioFrequency"
@@ -66,6 +65,7 @@
         android:layout_marginEnd="139dp"
         android:layout_marginRight="139dp"
         android:background="#9C9797"
+        android:onClick="backHome"
         android:text="Cancel"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,31 +110,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="156dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="109dp"
-        android:text="Non-Essential"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
-
-    <RadioButton
-        android:id="@+id/essentialTrue"
-        android:layout_width="163dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginRight="81dp"
-        android:text="Essential"
+    <RadioGroup
+        android:id="@+id/radioGroupNec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="443dp"
+        android:layout_marginEnd="352dp"
+        android:layout_marginRight="352dp"
+        android:layout_marginBottom="288dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45">
+
+        <RadioButton
+            android:id="@+id/radioBtnEss"
+            android:layout_width="130dp"
+            android:layout_height="39dp"
+            android:text="Essential" />
+
+        <RadioButton
+            android:id="@+id/radioBtnNon"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:text="Non Essential" />
+
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,6 @@ public class home extends AppCompatActivity {
     public void addItem(View view) {
         Intent intent = new Intent(this, NewItem.class);
         startActivity(intent);
-
-
     }
 
     //view expenses/items added
@@ -28,7 +26,6 @@ public class home extends AppCompatActivity {
     public void viewExpenses(View view) {
         Intent intent = new Intent(this, Expenses.class);
         startActivity(intent);
-
     }
 
     //help screen

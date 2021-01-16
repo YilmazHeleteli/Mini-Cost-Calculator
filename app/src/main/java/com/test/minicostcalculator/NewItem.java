@@ -22,14 +22,11 @@ public class NewItem extends AppCompatActivity {
     Button btnAdd;
     EditText itemFreq;
 
-    double price;
-
     RadioGroup radioGroupFreq;
     RadioButton radioButtonFreq;
     RadioGroup radioGroupCat;
     RadioButton radioButtonCat;
-    RadioGroup radioGroupNecessary;
-    RadioButton radioButtonNecessary;
+    RadioGroup radioGroupEssential;
 
     //objects in the View Item layout
 
@@ -41,28 +38,105 @@ public class NewItem extends AppCompatActivity {
     TextView itemViewMonth;
     TextView itemViewYear;
 
+    int viewN = 1;
+
+    public int cat = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
-        itemName = findViewById(R.id.txtName);
-        btnAdd = findViewById(R.id.AddItem);
-        itemPrice   = findViewById(R.id.txtPrice);
-
         //initialise radio group button values
+
         itemFreq = findViewById(R.id.txtFreq);
         radioGroupFreq = findViewById(R.id.radioFrequency);
         radioGroupCat = findViewById(R.id.radioCat);
-        radioGroupNecessary = findViewById(R.id.radioNec);
+        radioGroupEssential = findViewById(R.id.radioGroupNec);
 
     }
+    public void selectFood(View view)
+    {
+        cat = 1;
+        viewN++;
+        setView();
+    }
+    public void selectCloth(View view)
+    {
+        cat = 2;
+        viewN++;
+        setView();
+    }
+    public void selectTrans(View view)
+    {
+        cat = 3;
+        viewN++;
+        setView();
+    }
+    public void selectBills(View view)
+    {
+        cat = 4;
+        viewN++;
+        setView();
+    }
+    public void selectRec(View view)
+    {
+        cat = 5;
+        viewN++;
+        setView();
+    }
 
+    public void next(View view)
+    {
+        viewN++;
+        setView();
+    }
+    public void back(View view)
+    {
+        viewN--;
+        setView();
+    }
 //capture data from fields when Add Item is tapped
 
-Item item = new Item();
+public void setView()
+{
+    switch(viewN)
+    {
+        case 1:
+            setContentView(R.layout.activity_new_item);
+            break;
+        case 2:
+            setContentView(R.layout.category);
+            break;
+        case 3:
+            setContentView(R.layout.frequency);
+            break;
+        case 4:
+            setContentView(R.layout.viewitem);
+            break;
+    }
+}
 
 public void btnAdd(View v) {
+
+    //capture item properties, trim white space then assign to object properties
+
+    Item item = new Item();
+
+    itemName = findViewById(R.id.txtName);
+    itemName.getText().toString().trim();
+    item.Name = itemName.toString();
+
+
+    itemPrice = findViewById(R.id.txtPrice);
+    itemPrice.getText().toString().trim();
+    item.price = Double.parseDouble(itemPrice.getText().toString());
+    item.calcCosts(radioGroupFreq.getCheckedRadioButtonId(), Integer.parseInt(itemFreq.toString()));
+
+    item.essential = item.isEssential(radioGroupEssential);
+    item.category = item.whichCat(cat);
+    btnAdd = findViewById(R.id.AddItem);
+
 
         //first checks a name has been entered for the item
 if(itemName.getText().toString().isEmpty())
@@ -81,39 +155,6 @@ else{
 
         int selectedCat = radioGroupCat.getCheckedRadioButtonId();
         radioButtonCat = findViewById(selectedCat);
-
-
-        int selectedNec = radioGroupNecessary.getCheckedRadioButtonId();
-        radioButtonNecessary = findViewById(selectedNec);
-
-        //removes any white space from fields the user has entered values into
-        itemPrice.getText().toString().trim();
-        itemName.getText().toString().trim();
-        itemFreq.getText().toString().trim();
-
-        //retrieves the numerical value of the below strings
-        price = Double.parseDouble(itemPrice.getText().toString());
-        getFreq = Float.parseFloat(itemFreq.getText().toString());
-
-        //checks to see if the user has selected whether the item is necessary
-
-        switch (radioButtonNecessary.getText().toString())
-        {
-            case "Yes":
-                item.essential = true;
-                break;
-            case "Not Really...":
-                item.essential = false;
-                break;
-
-        //assigns a category to the item based on what the user has selected
-
-
-        //calculate costs per day, week, month and year
-
-        //initialise object values
-
-        item.Name = itemName.getText().toString();
 
 
         Toast.makeText(NewItem.this, "Item Added!" , Toast.LENGTH_SHORT).show();
@@ -154,15 +195,15 @@ else{
 
         ItemsDB db = new ItemsDB(this);
         db.open();
-        db.createItem(item.Name+" ("+necessary+")", ", £"+String.valueOf(item.price), " "+perX+radioButtonFreq.getText().toString()+", £"+String.format("%.2f", costPerDay) +" per day, "
-                +"£"+String.format("%.2f", costPerMonth)+" per month "+", £"+String.format("%.2f", costPerYear)+" per year.");
+        db.createItem(item.Name+" ("+item.essential+")", ", £"+String.valueOf(item.price), " "+item.pFreq1+item.pFreq2+", £"+String.format("%.2f", item.costPerDay) +" per day, "
+               +"£"+String.format("%.2f", item.costPerMonth)+" per month "+", £"+String.format("%.2f", item.costPerYear)+" per year.");
         db.close();
 
 
         //sets the text values of the view item page based on the object's values
 
         itemViewName.setText(item.Name+" - £"+String.format("%.2f", item.price)+"("+item.category+").");
-        itemViewFreq.setText("You buy this "+perX+radioButtonFreq.getText().toString()+". This is costing you:");
+        itemViewFreq.setText(item.displayFreq() + "This is costing you:");
         itemViewDay.setText("£"+String.format("%.2f", item.costPerDay)+" a day");
         itemViewWeek.setText("£"+String.format("%.2f", item.costPerWeek)+" a week");
         itemViewMonth.setText("£"+String.format("%.2f", item.costPerMonth)+" a month");
